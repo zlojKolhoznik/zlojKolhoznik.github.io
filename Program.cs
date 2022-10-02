@@ -7,7 +7,8 @@ app.Run(async context =>
     Console.WriteLine(context.Request.Method);
     if (context.Request.Path == "/hello")
     {
-        await context.Response.WriteAsync("Hello world");
+        context.Response.ContentType = "text/html";
+        await context.Response.SendFileAsync("index.html");
     }
 });
 app.Run();
